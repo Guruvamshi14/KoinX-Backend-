@@ -18,9 +18,7 @@ const PORT = 3000;
 app.use(express.json());
 const {saveCryptoData} = require('./controllers/saveCryptoData');
 const {latestCryptoCurrency} = require('./controllers/latestCryptoCurrency.js');
-
-
-
+const {SDCryptoCurrency} = require('./controllers/SDCryptoCurrency.js');
 
 // app.get("/res",saveCryptoData);
 
@@ -29,6 +27,7 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/stats',latestCryptoCurrency);
+app.get('/deviation',SDCryptoCurrency);
 
 cron.schedule('0 */2 * * *',saveCryptoData);
 
